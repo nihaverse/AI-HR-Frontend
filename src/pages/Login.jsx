@@ -41,7 +41,7 @@ function Login() {
       // const { data } = await axios.post("/api/auth/login", formData);
       // then navigate by role: "/hr", "/employee" or "/job-seeker"
 
-      navigate("/job-seeker");
+      navigate("/hr");
     } catch {
       setError("Login failed. Check your details and try again.");
     } finally {
