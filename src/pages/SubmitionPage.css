@@ -232,3 +232,80 @@
   .sp-voice.is-live .sp-voice-icon { animation: none; }
   .sp-page * { transition: none !important; }
 }
+
+/* =====================================================================
+   FIT-TO-SCREEN: page fills exactly one viewport, no page scrolling.
+   The response box stretches to use whatever height is left.
+   ===================================================================== */
+.sp-page {
+  height: 100vh; height: 100dvh; min-height: 0; overflow: hidden;
+  display: flex; flex-direction: column;
+  padding: clamp(8px, 1.8vh, 18px) clamp(12px, 2.4vw, 36px);
+}
+.sp-topbar {
+  flex: none; height: clamp(54px, 8vh, 72px); width: 100%;
+  margin: 0 auto clamp(8px, 1.5vh, 16px); padding: 0 20px; border-radius: 24px;
+}
+.sp-logo { width: 42px; height: 42px; border-radius: 13px; }
+.sp-logo svg { width: 22px; height: 22px; }
+.sp-brand-name { font-size: 20px; }
+.sp-brand-sub { margin-top: 4px; font-size: 9px; }
+.sp-round { width: 40px; height: 40px; }
+.sp-signal { padding: 6px 16px 6px 12px; }
+
+.sp-card {
+  flex: 1; min-height: 0; width: 100%; display: flex; flex-direction: column;
+  padding: clamp(14px, 2.6vh, 30px) clamp(18px, 3vw, 44px) clamp(12px, 2vh, 24px);
+  border-radius: 32px;
+}
+.sp-meta-row, .sp-question, .sp-actions { flex: none; }
+.sp-phase-pill { padding: 10px 20px; font-size: 12px; }
+.sp-step { width: 28px; height: 6px; }
+.sp-phase-label { font-size: 11px; }
+.sp-stats { gap: 10px; }
+.sp-stat { padding: 7px 16px; border-radius: 16px; gap: 10px; }
+.sp-stat-value { font-size: 14px; }
+.sp-stat-bar { height: 30px; }
+
+.sp-question { margin-top: clamp(8px, 2vh, 22px); gap: 24px; align-items: center; }
+.sp-eyebrow { font-size: 11px; }
+.sp-title { margin: clamp(6px, 1.2vh, 12px) 0 clamp(4px, 1vh, 10px); font-size: clamp(22px, 4.6vh, 42px); }
+.sp-followup { font-size: clamp(14px, 2.5vh, 22px); }
+.sp-art { zoom: 0.6; margin-right: 0; }
+
+.sp-response {
+  flex: 1; min-height: 0; display: flex; flex-direction: column;
+  margin-top: clamp(8px, 2vh, 20px); padding: clamp(12px, 2vh, 22px) 24px;
+  border-radius: 26px;
+}
+.sp-response-head { flex: none; margin-bottom: clamp(8px, 1.4vh, 14px); }
+.sp-chat-icon { width: 34px; height: 34px; }
+.sp-response-title { font-size: 16px; }
+.sp-textarea {
+  flex: 1; min-height: 56px; height: auto; resize: none;
+  padding: 16px 20px; border-radius: 20px; font-size: 16px;
+}
+.sp-response-foot { flex: none; margin-top: clamp(8px, 1.6vh, 16px); gap: 28px; }
+.sp-voice { height: clamp(44px, 6.4vh, 58px); padding: 0 24px 0 10px; font-size: 13px; gap: 12px; }
+.sp-voice-icon { width: 34px; height: 34px; }
+.sp-density-bars { margin-top: 8px; }
+.sp-density-bars span { width: 24px; height: 7px; }
+.sp-tokens { font-size: 17px; }
+.sp-shield { width: 42px; height: 42px; border-radius: 13px; }
+
+.sp-actions { margin-top: clamp(8px, 1.8vh, 18px); }
+.sp-btn { height: clamp(40px, 6vh, 52px); padding: 0 28px; font-size: 12px; }
+
+/* very short screens: drop the decorative art */
+@media (max-height: 700px) {
+  .sp-art { display: none; }
+  .sp-stat--bar .sp-micro, .sp-brand-sub { display: none; }
+}
+
+/* phones: let the page scroll naturally instead of squeezing */
+@media (max-width: 720px) {
+  .sp-page { height: auto; min-height: 100dvh; overflow: auto; }
+  .sp-card { flex: none; }
+  .sp-response { flex: none; }
+  .sp-textarea { flex: none; height: 200px; }
+}
